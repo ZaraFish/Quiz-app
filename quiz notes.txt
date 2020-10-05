@@ -1,0 +1,142 @@
+Quiz App
+Top tip, add classes and ids when you are first creating your html.
+Its easier than going back and adding them back in.
+
+:root {
+    --hue-neutral: 230;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+}
+
+body {
+    --hue: var(--hue-neutral);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 80%, 20%);
+}
+
+Insert the var into the body and give it a root outside the body.
+
+
+Using a var called --hue as the background color will change depending on 
+if the right or wrong answr is chosen. 
+This part, the %, sets the saturation, and then the lightness
+background-color: hsl(var(--hue), 80%, 20%);
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+The box-shadow gives a nice faded border. The order of numbers means
+x-ofset y-ofset blur spread
+
+(ofset means if you want any axis looking different)
+
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+For our button, we want them in columns of 2, and auto width to adjust to text answer sizes.
+The margin in this way hits top/bottom left/right
+
+.btn-hover {
+    border-color: black;
+}
+
+When hovering over a btn, will change the border colour
+
+.btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+}
+
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+
+Using our root to style the variables of wrong/right
+Changed font colour in correct to blakc as white was hard to see against the green.
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+Making the start and the next button bigger, and the text bigger.
+Can select two classes at a time, make sure to seperate by a comma
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+Div w class .controls wrapping the start and next buttons.
+This will make them center.
+
+.hide {
+    display: none;
+}
+
+Hides everything with this class, which after html and index is done,
+is everything apart from the start button.
+
+function startGame () {
+
+}
+
+function startNextQuestion () {
+
+}
+
+function selectAnswer () {
+
+}
+
+Started the JS by thinking about the main function we want in the game.
+Then think about what const that will need/
+
+You can use the console.log to help you find out where you went wrong.
+It gives the specific line in the code.
+Make sure to use commas to seperate after each item within a {} in JS eg
+const questions = [
+    {
+        question: 'What is the most under-populated country in the world?',
+        answers: [
+            { text: 'Switzerland', correct:false},
+            { text: 'Switzerland', correct:true},
+            { text: 'Switzerland', correct:false},
+            { text: 'Switzerland', correct:false}
+        ]
+    }
+]
+
+function selectAnswer(e) {
+    const selectedButton = e.target 
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+
+e.target just means wherever we click
+
+
+
+
+
